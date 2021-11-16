@@ -33,9 +33,9 @@ ACME is available at `/bin/acme` and can be called from CLI as `acme`.
 [docker]: https://www.docker.com/
 [docker-repo]: https://hub.docker.com/r/jackwolfard/acme
 [repo]: https://github.com/JackWolfard/acme
-[build-shield]: https://img.shields.io/github/workflow/status/jackwolfard/acme/build-containers?label=build&logo=github&style=flat-square
+[build-shield]: https://img.shields.io/github/workflow/status/jackwolfard/acme/build-containers?label=build&logo=github&style=flat
 [build-action]: https://github.com/jackwolfard/acme/actions?workflow=build-containers
-[docker-version-shield]: https://img.shields.io/docker/v/jackwolfard/acme?sort=semver&style=flat-square
-[docker-image-shield]: https://img.shields.io/docker/image-size/jackwolfard/acme?sort=semver&style=flat-square
-[docker-stars-shield]: https://img.shields.io/docker/stars/jackwolfard/acme?style=flat-square
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/jackwolfard/acme?style=flat-square
+[docker-version-shield]: https://img.shields.io/docker/v/jackwolfard/acme?sort=semver&style=flat
+[docker-image-shield]: https://img.shields.io/docker/image-size/jackwolfard/acme?sort=semver&style=flat
+[docker-stars-shield]: https://img.shields.io/docker/stars/jackwolfard/acme?style=flat
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/jackwolfard/acme?style=flat
