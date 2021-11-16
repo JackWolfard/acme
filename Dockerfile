@@ -1,8 +1,8 @@
 FROM alpine:3.14.3 AS base
 
-RUN apk add --no-cache make git gcc musl-dev
+RUN apk add --no-cache make subversion gcc musl-dev
 WORKDIR /opt/install
-RUN git clone https://github.com/meonwax/acme.git
+RUN svn checkout https://svn.code.sf.net/p/acme-crossass/code-0/trunk acme
 WORKDIR /opt/install/acme/src
 RUN make
 RUN make install
