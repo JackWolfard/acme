@@ -8,6 +8,7 @@ on:
     paths:
       - "Dockerfile"
       - "config.json"
+      - "./tests/Dockerfile"
   workflow_dispatch:
 jobs:
   generate-matrix:
