@@ -4,6 +4,7 @@ import sys
 from typing import List
 import subprocess
 import shlex
+import re
 
 from ..fetch_config import Config
 
@@ -20,9 +21,19 @@ def run_tests(config: Config, tag: str, tests: List[Path]) -> int:
         f'docker run --rm {config.docker_username}/{config.docker_repo}:'
         f'{tag}-test -c "acme --version"'
     )
-    process = subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr)
+    process: subprocess.CompletedProcess
+    process = subprocess.run(cmd, capture_output=True, text=True)
+    print(process.stdout)
+    print(process.stderr, file=sys.stderr)
     if process.returncode != 0:
         return 5
+
+    pattern = r'\d+.\d+(.\d+)?'
+    if re.fullmatch(pattern, tag) is not None:
+        # if this is not latest/stable
+        if process.stdout.find(tag) < 0:
+            return 6
+
     for test in tests:
         docker_test = Path(f'/opt/acme/testing/docker/{test.name}')
         cmd = shlex.split(
@@ -32,7 +43,7 @@ def run_tests(config: Config, tag: str, tests: List[Path]) -> int:
         )
         process = subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr)
         if process.returncode != 0:
-            return 6
+            return 7
     return 0
 
 def main(config_path: Path, tests_path: Path, tag: str) -> int:

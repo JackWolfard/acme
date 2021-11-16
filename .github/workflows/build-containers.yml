@@ -60,6 +60,7 @@ jobs:
           build-args: |
             "REVISION=${{ matrix.revision }}"
             "REPO=${{ matrix.repo }}"
+            "TAG=${{ matrix.tag }}"
 
       - name: Setup Python
         uses: actions/setup-python@v2
