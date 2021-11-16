@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 SRC_DIR=$(echo ${0%/*} | xargs realpath)
-cd $SRC_DIR/../..
+cd $SRC_DIR/../../..
 ROOT_DIR=$(pwd)
-TEST_DIR="${ROOT_DIR}/tests"
+TEST_DIR="${ROOT_DIR}/tests/docker"
 TAG="latest"
 cd $TEST_DIR
 

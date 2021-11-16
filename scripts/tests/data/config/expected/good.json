@@ -1,0 +1,24 @@
+{
+  "include": [
+    {
+      "tag": "latest",
+      "revision": 323,
+      "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    },
+    {
+      "tag": "stable",
+      "revision": 266,
+      "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    },
+    {
+      "tag": "0.97",
+      "revision": 266,
+      "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    },
+    {
+      "tag": "0.96.5",
+      "revision": 121,
+      "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+    }
+  ]
+}

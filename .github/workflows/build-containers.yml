@@ -6,8 +6,29 @@ on:
       - "Dockerfile"
   workflow_dispatch:
 jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.x'
+
+      - name: Fetch config JSON
+        id: set-matrix
+        run: |
+          OUT=$(python ./scripts/fetch_config.py)
+          echo "::set-output name=matrix::$OUT"
   build:
     runs-on: ubuntu-latest
+    needs: generate-matrix
+    strategy:
+      matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -29,10 +50,10 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/acme:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/acme:${{ matrix.tag }}
           build-args: |
-            "REVISION=323"
-            "REPO=https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+            "REVISION=${{ matrix.revision }}"
+            "REPO=${{ matrix.repo }}"
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

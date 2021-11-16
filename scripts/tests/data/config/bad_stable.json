@@ -1,0 +1,9 @@
+{
+  "latest": 323,
+  "stable": "0.98",
+  "releases": {
+    "0.97": 266,
+    "0.96.5": 121
+  },
+  "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+}
