@@ -9,6 +9,8 @@ on:
       - "Dockerfile"
       - "config.json"
       - "./tests/Dockerfile"
+      - "./scripts/tests/test_docker.py"
+      - "./scripts/fetch_config.py"
   workflow_dispatch:
 jobs:
   generate-matrix:

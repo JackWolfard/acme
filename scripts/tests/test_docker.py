@@ -16,6 +16,13 @@ def fetch_args() -> str:
 def run_tests(config: Config, tag: str, tests: List[Path]) -> int:
     if len(config.docker_repo) == 0 or len(config.docker_username) == 0:
         return 4
+    cmd = shlex.split(
+        f'docker run --rm {config.docker_username}/{config.docker_repo}:'
+        f'{tag}-test -c "acme --version"'
+    )
+    process = subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr)
+    if process.returncode != 0:
+        return 5
     for test in tests:
         docker_test = Path(f'/opt/acme/testing/docker/{test.name}')
         cmd = shlex.split(
@@ -25,7 +32,7 @@ def run_tests(config: Config, tag: str, tests: List[Path]) -> int:
         )
         process = subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr)
         if process.returncode != 0:
-            return 5
+            return 6
     return 0
 
 def main(config_path: Path, tests_path: Path, tag: str) -> int:
