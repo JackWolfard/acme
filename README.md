@@ -1,8 +1,9 @@
 # ACME Cross-Assembler Docker Distribution
 
-This repository serves as a [Docker][docker] distribution of [ACME][acme] at
-[jackwolfard/acme][docker-repo] by leveraging [GitHub Actions][github-actions]
-to build the trunk of the [SVN repository][acme-svn].
+This [repository][repo] serves as a [Docker][docker] distribution of
+[ACME][acme] at [jackwolfard/acme][docker-repo] by leveraging
+[GitHub Actions][github-actions] to build the trunk of the
+[SVN repository][acme-svn].
 
 ## Reference
 
@@ -25,3 +26,4 @@ ACME is available at `/bin/acme` and can be called from CLI as `acme`.
 [github-actions]: https://github.com/features/actions
 [docker]: https://www.docker.com/
 [docker-repo]: https://hub.docker.com/r/jackwolfard/acme
+[repo]: https://github.com/JackWolfard/acme
