@@ -1,5 +1,8 @@
 name: build-containers
 on:
+  schedule:
+    # Run on 1st of every month to refresh images
+    - cron: '0 0 1 * *'
   push:
     branches: [ main ]
     paths:
