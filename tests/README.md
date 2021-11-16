@@ -1,8 +1,8 @@
 # Testing the ACME Docker image
 
 The [ACME subversion][acme-svn] distribution provides several tests located in
-the `testing` folder. Run `scripts/tests/run.sh` after building the image w/
-`scripts/tests/build.sh` to execute these tests against the
+the `testing` folder. Run `scripts/docker/tests/run.sh` after building the image
+w/ `scripts/docker/tests/build.sh` to execute these tests against the
 [Docker image][docker-repo].
 
 ## Tests
