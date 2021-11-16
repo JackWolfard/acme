@@ -1,11 +1,18 @@
-FROM jackwolfard/acme:latest AS base
+ARG TAG=latest
+
+FROM jackwolfard/acme:$TAG AS base
+
+ARG REVISION
+ARG REPO
 
 RUN apk add --no-cache subversion
 WORKDIR /opt
-RUN svn checkout https://svn.code.sf.net/p/acme-crossass/code-0/trunk acme
+RUN svn checkout -r $REVISION $REPO acme
 
-FROM jackwolfard/acme:latest AS runtime
+FROM jackwolfard/acme:$TAG AS runtime
+
+RUN apk add --no-cache bash
 
 COPY --from=base /opt/acme/testing /opt/acme/testing
 WORKDIR /opt/acme/testing
-ENTRYPOINT [ "/bin/sh" ]
+ENTRYPOINT [ "/bin/bash" ]
