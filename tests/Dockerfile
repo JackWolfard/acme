@@ -8,6 +8,8 @@ ARG REPO
 RUN apk add --no-cache subversion
 WORKDIR /opt
 RUN svn checkout -r $REVISION $REPO acme
+WORKDIR /opt/acme
+RUN mkdir -p testing
 
 FROM jackwolfard/acme:$TAG AS runtime
 

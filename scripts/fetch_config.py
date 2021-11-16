@@ -11,13 +11,24 @@ class Config:
     stable: str
     releases: Dict[str,int]
     repo: str
+    testing: Dict[str,List[str]]
+
+    docker_username: str
+    docker_repo: str
     
     def __init__(self, latest: int, stable: str, releases: Dict[str,int],
-                 repo: str) -> None:
+                 repo: str, testing: Optional[Dict[str,List[str]]] = None,
+                 docker: Optional[Dict[str,str]] = None) -> None:
         self.latest = latest
         self.stable = stable
         self.releases = releases
         self.repo = repo
+        self.testing = testing if testing is not None else {}
+        self.docker_username = ''
+        self.docker_repo = ''
+        if docker is not None:
+            self.docker_username = docker['username']
+            self.docker_repo = docker['repo']
     
     @classmethod
     def load(cls, config: Path) -> Optional[Config]: 
@@ -34,6 +45,8 @@ class Config:
         latest: int
         stable: str
         releases: Dict[str,int]
+        testing: Optional[Dict[str,List[str]]]
+        docker: Optional[Dict[str,str]]
         repo: str
         try:
             latest = config_json['latest']
@@ -45,12 +58,15 @@ class Config:
             assert releases.get(config_json['stable']) is not None
             repo = config_json['repo']
             assert type(repo) == str
+            testing = config_json.get('testing')
+            docker = config_json.get('docker')
         except:
             print(f'fetch_config.py: Config.load error '
                   f'{traceback.format_exc()}',
                   file=sys.stderr)
             return None
-        return Config(latest, stable, releases, repo)
+        return Config(latest, stable, releases, repo, testing=testing,
+                      docker=docker)
 
     def to_json(self) -> str:
         out: List[Dict] = []

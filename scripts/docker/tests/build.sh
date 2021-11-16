@@ -11,6 +11,6 @@ TEST_DIR="${ROOT_DIR}/tests"
 
 cd $TEST_DIR
 
-DOCKER_BUILDKIT=1 docker build -t "jackwolfard/acme-tests:${TAG}" \
+DOCKER_BUILDKIT=1 docker build -t "jackwolfard/acme:${TAG}-test" \
   --build-arg TAG="${TAG}" --build-arg REPO="${REPO}" \
   --build-arg REVISION="${REVISION}" .

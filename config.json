@@ -10,5 +10,14 @@
     "0.94": 33,
     "0.94.12": 33
   },
-  "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk"
+  "testing": {
+    "latest": ["errors", "warnings", "cpus"],
+    "stable": ["errors"],
+    "0.97": ["errors"]
+  },
+  "repo": "https://svn.code.sf.net/p/acme-crossass/code-0/trunk",
+  "docker": {
+    "username": "jackwolfard",
+    "repo": "acme"
+  }
 }
