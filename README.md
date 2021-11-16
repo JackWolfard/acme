@@ -1,3 +1,5 @@
+[![Build][build-shield]][build-action]
+
 # ACME Cross-Assembler Docker Distribution
 
 This [repository][repo] serves as a [Docker][docker] distribution of
@@ -27,3 +29,5 @@ ACME is available at `/bin/acme` and can be called from CLI as `acme`.
 [docker]: https://www.docker.com/
 [docker-repo]: https://hub.docker.com/r/jackwolfard/acme
 [repo]: https://github.com/JackWolfard/acme
+[build-shield]: https://img.shields.io/github/workflow/status/jackwolfard/acme/build-containers?label=build&logo=github&style=flat-square
+[build-action]: https://github.com/jackwolfard/acme/actions?workflow=build-containers
