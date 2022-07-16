@@ -1,4 +1,4 @@
-FROM alpine:3.14.3 AS base
+FROM alpine:3.16 AS base
 
 ARG REVISION
 ARG REPO
@@ -10,7 +10,7 @@ WORKDIR /opt/install/acme/src
 RUN make
 RUN make install
 
-FROM alpine:3.14.3 AS runtime
+FROM alpine:3.16 AS runtime
 
 COPY --from=base /usr/local/bin/acme /bin/acme
 ENTRYPOINT ["/bin/sh"]
